@@ -13,3 +13,15 @@
 .DS_Store
 .env
 npm-debug.log
+
+######################
+# Intellij
+######################
+.idea/
+*.iml
+*.iws
+*.ipr
+*.ids
+*.orig
+classes/
+out/

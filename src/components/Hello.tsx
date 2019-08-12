@@ -1,5 +1,7 @@
 import * as React from 'react';
 import './Hello.css';
+import Button from 'antd/es/button';
+import '../App.css'
 
 export interface Props {
   name: string;
@@ -13,16 +15,22 @@ function Hello({ name, enthusiasmLevel = 1, onIncrement, onDecrement }: Props) {
     throw new Error('You could be a little more enthusiastic. :D');
   }
 
+  // return (
+  //   <div className="hello">
+  //     <div className="greeting">
+  //       Hello {name + getExclamationMarks(enthusiasmLevel)}
+  //     </div>
+  //     <div>
+  //       <button onClick={onDecrement}>-</button>
+  //       <button onClick={onIncrement}>+</button>
+  //     </div>
+  //   </div>
+  // );
+
   return (
-    <div className="hello">
-      <div className="greeting">
-        Hello {name + getExclamationMarks(enthusiasmLevel)}
-      </div>
       <div>
-        <button onClick={onDecrement}>-</button>
-        <button onClick={onIncrement}>+</button>
+        <Button type="primary">Button</Button>
       </div>
-    </div>
   );
 }
 

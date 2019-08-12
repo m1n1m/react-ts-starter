@@ -9,6 +9,7 @@ import { StoreState } from './types/index';
 
 import './index.css';
 import {EnthusiasmAction} from "./actions";
+import App from "./App";
 
 const store = createStore<StoreState, EnthusiasmAction, any, any>(enthusiasm, {
   enthusiasmLevel: 1,
@@ -17,7 +18,7 @@ const store = createStore<StoreState, EnthusiasmAction, any, any>(enthusiasm, {
 
 ReactDOM.render(
   <Provider store={store}>
-    <Hello />
+    <App />
   </Provider>,
   document.getElementById('root') as HTMLElement
 );
