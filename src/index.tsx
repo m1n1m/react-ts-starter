@@ -1,23 +1,42 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
-import Hello from './containers/Hello';
 import { Provider } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import { createStore } from 'redux';
 import { enthusiasm } from './reducers/index';
 import { StoreState } from './types/index';
-
+import AppComponent from './App'
 import './index.css';
-import {EnthusiasmAction} from "./actions";
 
-const store = createStore<StoreState, EnthusiasmAction, any, any>(enthusiasm, {
-  enthusiasmLevel: 1,
-  languageName: 'TypeScript',
-});
+import { clearAuthentication } from './shared/reducers/authentication';
+import initStore from './config/store';
+import DevTools from './config/devtools';
+import setupAxiosInterceptors from "./config/axios-interceptor";
+import ErrorBoundary from "./shared/error/error-boundary";
 
-ReactDOM.render(
-  <Provider store={store}>
-    <Hello />
-  </Provider>,
-  document.getElementById('root') as HTMLElement
-);
+
+const devTools = process.env.NODE_ENV === 'development' ? <DevTools /> : null;
+
+const store = initStore();
+
+const actions = bindActionCreators({ clearAuthentication }, store.dispatch);
+setupAxiosInterceptors(() => actions.clearAuthentication('login.error.unauthorized'));
+
+const rootEl = document.getElementById('root');
+
+const render = Component =>
+    ReactDOM.render(
+        <ErrorBoundary>
+            <Provider store={store}>
+                <div>
+                    {/* If this slows down the app in dev disable it and enable when required  */}
+                    {devTools}
+                    <Component />
+                </div>
+            </Provider>
+        </ErrorBoundary>,
+        rootEl
+    );
+
+render(AppComponent);

@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "baseUrl": "src",
     "outDir": "build/dist",
     "module": "commonjs",
     "target": "es5",
@@ -12,8 +13,13 @@
     "noImplicitReturns": true,
     "noImplicitThis": true,
     "noImplicitAny": false,
-    "strictNullChecks": true,
-    "esModuleInterop": true
+    "strictNullChecks": false,
+    "esModuleInterop": true,
+    "paths": {
+      "app/*": ["*"],
+      "@shared/*": ["shared/*"],
+      "@config/*": ["config/*"]
+    }
   },
   "exclude": [
     "node_modules",
