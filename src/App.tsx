@@ -27,7 +27,7 @@ export interface IAppProps extends StateProps, DispatchProps {}
 
 export class App extends React.Component<IAppProps> {
     componentDidMount() {
-        this.props.getSession();
+        // this.props.getSession();
         this.props.getProfile();
     }
 
@@ -35,26 +35,26 @@ export class App extends React.Component<IAppProps> {
         const paddingTop = '60px';
         return (
             <Router basename={baseHref}>
-                <div className="app-container" style={{ paddingTop }}>
-                    <ToastContainer position={toast.POSITION.TOP_LEFT} className="toastify-container" toastClassName="toastify-toast" />
-                    <ErrorBoundary>
+                <AppRoutes />
+                {/*<div className="app-container" style={{ paddingTop }}>*/}
+                {/*    <ToastContainer position={toast.POSITION.TOP_LEFT} className="toastify-container" toastClassName="toastify-toast" />*/}
+                {/*    <ErrorBoundary>*/}
 
-                    </ErrorBoundary>
-                    <div className="container-fluid view-container" id="app-view-container">
-                        <Card className="jh-card">
-                            <ErrorBoundary>
-                                <AppRoutes />
-                            </ErrorBoundary>
-                        </Card>
-                    </div>
-                </div>
+                {/*    </ErrorBoundary>*/}
+                {/*    <div className="container-fluid view-container" id="app-view-container">*/}
+                {/*        <Card className="jh-card">*/}
+                {/*            <ErrorBoundary>*/}
+                {/*                <AppRoutes />*/}
+                {/*            </ErrorBoundary>*/}
+                {/*        </Card>*/}
+                {/*    </div>*/}
+                {/*</div>*/}
             </Router>
         );
     }
 }
 
-const mapStateToProps = ({ authentication, applicationProfile, locale }: IRootState) => ({
-    currentLocale: locale.currentLocale,
+const mapStateToProps = ({ authentication, applicationProfile }: IRootState) => ({
     isAuthenticated: authentication.isAuthenticated,
     isAdmin: hasAnyAuthority(authentication.account.authorities, [AUTHORITIES.ADMIN]),
     ribbonEnv: applicationProfile.ribbonEnv,
@@ -62,7 +62,7 @@ const mapStateToProps = ({ authentication, applicationProfile, locale }: IRootSt
     isSwaggerEnabled: applicationProfile.isSwaggerEnabled
 });
 
-const mapDispatchToProps = { setLocale, getSession, getProfile };
+const mapDispatchToProps = { getProfile };
 
 type StateProps = ReturnType<typeof mapStateToProps>;
 type DispatchProps = typeof mapDispatchToProps;
@@ -71,4 +71,3 @@ export default connect(
     mapStateToProps,
     mapDispatchToProps
 )(hot(module)(App));
-

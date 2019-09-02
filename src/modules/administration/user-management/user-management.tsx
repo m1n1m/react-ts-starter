@@ -8,7 +8,7 @@ import {
   ICrudPutAction,
   TextFormat,
   JhiPagination,
-  getPaginationItemsNumber,
+  // getPaginationItemsNumber,
   getSortState,
   IPaginationBaseState
 } from 'react-jhipster';
@@ -178,12 +178,12 @@ export class UserManagement extends React.Component<IUserManagementProps, IPagin
           </tbody>
         </Table>
         <Row className="justify-content-center">
-          <JhiPagination
-            items={getPaginationItemsNumber(totalItems, this.state.itemsPerPage)}
-            activePage={this.state.activePage}
-            onSelect={this.handlePagination}
-            maxButtons={5}
-          />
+          {/*<JhiPagination*/}
+          {/*  items={getPaginationItemsNumber(totalItems, this.state.itemsPerPage)}*/}
+          {/*  activePage={this.state.activePage}*/}
+          {/*  onSelect={this.handlePagination}*/}
+          {/*  maxButtons={5}*/}
+          {/*/>*/}
         </Row>
       </div>
     );

@@ -9,6 +9,16 @@ import { IRootState } from 'app/shared/reducers';
 import { getSession } from 'app/shared/reducers/authentication';
 import { saveAccountSettings, reset } from './settings.reducer';
 
+const mapStateToProps = ({ authentication }: IRootState) => ({
+  account: authentication.account,
+  isAuthenticated: authentication.isAuthenticated
+});
+
+const mapDispatchToProps = { reset };
+
+type StateProps = ReturnType<typeof mapStateToProps>;
+type DispatchProps = typeof mapDispatchToProps;
+
 export interface IUserSettingsProps extends StateProps, DispatchProps {}
 
 export interface IUserSettingsState {
@@ -17,7 +27,7 @@ export interface IUserSettingsState {
 
 export class SettingsPage extends React.Component<IUserSettingsProps, IUserSettingsState> {
   componentDidMount() {
-    this.props.getSession();
+    // this.props.getSession();
   }
 
   componentWillUnmount() {
@@ -30,7 +40,7 @@ export class SettingsPage extends React.Component<IUserSettingsProps, IUserSetti
       ...values
     };
 
-    this.props.saveAccountSettings(account);
+    // this.props.saveAccountSettings(account);
     event.persist();
   };
 
@@ -113,16 +123,6 @@ export class SettingsPage extends React.Component<IUserSettingsProps, IUserSetti
     );
   }
 }
-
-const mapStateToProps = ({ authentication }: IRootState) => ({
-  account: authentication.account,
-  isAuthenticated: authentication.isAuthenticated
-});
-
-const mapDispatchToProps = { getSession, saveAccountSettings, reset };
-
-type StateProps = ReturnType<typeof mapStateToProps>;
-type DispatchProps = typeof mapDispatchToProps;
 
 export default connect(
   mapStateToProps,

@@ -2,8 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { RouteComponentProps } from 'react-router';
 import { Input, Row, Table } from 'reactstrap';
-import { Translate, TextFormat, JhiPagination, getPaginationItemsNumber, getSortState, IPaginationBaseState } from 'react-jhipster';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Translate, TextFormat, JhiPagination, getSortState, IPaginationBaseState } from 'react-jhipster';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { APP_TIMESTAMP_FORMAT } from 'app/config/constants';
 import { ITEMS_PER_PAGE } from 'app/shared/util/pagination.constants';
@@ -104,15 +104,15 @@ export class AuditsPage extends React.Component<IAuditsPageProps, IAuditsPageSta
             <tr>
               <th onClick={this.sort('auditEventDate')}>
                 <Translate contentKey="audits.table.header.date">Date</Translate>
-                <FontAwesomeIcon icon="sort" />
+                {/*<FontAwesomeIcon icon="sort" />*/}
               </th>
               <th onClick={this.sort('principal')}>
                 <Translate contentKey="audits.table.header.principal">User</Translate>
-                <FontAwesomeIcon icon="sort" />
+                {/*<FontAwesomeIcon icon="sort" />*/}
               </th>
               <th onClick={this.sort('auditEventType')}>
                 <Translate contentKey="audits.table.header.status">State</Translate>
-                <FontAwesomeIcon icon="sort" />
+                {/*<FontAwesomeIcon icon="sort" />*/}
               </th>
               <th>
                 <Translate contentKey="audits.table.header.data">Extra data</Translate>
@@ -134,12 +134,12 @@ export class AuditsPage extends React.Component<IAuditsPageProps, IAuditsPageSta
           </tbody>
         </Table>
         <Row className="justify-content-center">
-          <JhiPagination
-            items={getPaginationItemsNumber(totalItems, this.state.itemsPerPage)}
-            activePage={this.state.activePage}
-            onSelect={this.handlePagination}
-            maxButtons={5}
-          />
+          {/*<JhiPagination*/}
+          {/*  items={getPaginationItemsNumber(totalItems, this.state.itemsPerPage)}*/}
+          {/*  activePage={this.state.activePage}*/}
+          {/*  onSelect={this.handlePagination}*/}
+          {/*  maxButtons={5}*/}
+          {/*/>*/}
         </Row>
       </div>
     );

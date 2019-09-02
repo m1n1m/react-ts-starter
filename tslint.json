@@ -374,5 +374,6 @@
       "config/**/*.js",
       "node_modules/**/*.ts"
     ]
-  }
+  },
+  "interface-name" : [true, "never-prefix"]
 }

@@ -22,7 +22,7 @@ export class PasswordPage extends React.Component<IUserPasswordProps, IUserPassw
 
   componentDidMount() {
     this.props.reset();
-    this.props.getSession();
+    // this.props.getSession();
   }
 
   componentWillUnmount() {
@@ -112,7 +112,7 @@ const mapStateToProps = ({ authentication }: IRootState) => ({
   isAuthenticated: authentication.isAuthenticated
 });
 
-const mapDispatchToProps = { getSession, savePassword, reset };
+const mapDispatchToProps = { savePassword, reset };
 
 type StateProps = ReturnType<typeof mapStateToProps>;
 type DispatchProps = typeof mapDispatchToProps;

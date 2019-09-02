@@ -49,7 +49,7 @@ import passwordReset, { PasswordResetState } from 'app/modules/account/password-
 
 export interface IRootState {
   readonly authentication: AuthenticationState;
-  readonly locale: LocaleState;
+  // readonly locale: LocaleState;
   readonly applicationProfile: ApplicationProfileState;
   readonly administration: AdministrationState;
   readonly userManagement: UserManagementState;
@@ -63,7 +63,7 @@ export interface IRootState {
 
 const rootReducer = combineReducers<IRootState>({
   authentication,
-  locale,
+  // locale,
   applicationProfile,
   administration,
   userManagement,

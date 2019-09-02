@@ -119,8 +119,8 @@ export class RegisterPage extends React.Component<IRegisterProps, IRegisterState
   }
 }
 
-const mapStateToProps = ({ locale }: IRootState) => ({
-  currentLocale: locale.currentLocale
+const mapStateToProps = (IRootState) => ({
+  currentLocale: 'ru'
 });
 
 const mapDispatchToProps = { handleRegister, reset };
